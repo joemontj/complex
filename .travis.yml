@@ -7,10 +7,10 @@ before_install:
 script:
     - docker run -e CI=true jomonjames/react-test npm test
 after_success:
-    - docker build -t jomonjames/multi-client -f ./client
-    - docker build -t jomonjames/multi-nginx -f ./nginx
-    - docker build -t jomonjames/multi-server -f ./server
-    - docker build -t jomonjames/multi-worker -f ./worker
+    - docker build -t jomonjames/multi-client -f ./client/Dockerfile
+    - docker build -t jomonjames/multi-nginx -f ./nginx/Dockerfile
+    - docker build -t jomonjames/multi-server -f ./server/Dockerfile
+    - docker build -t jomonjames/multi-worker -f ./worker/Dockerfile
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     - docker push jomonjames/multi-client
     - docker push jomonjames/multi-nginx
