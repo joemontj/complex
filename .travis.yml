@@ -11,3 +11,8 @@ after_success:
     - docker build -t jomonjames/multi-nginx -f ./nginx
     - docker build -t jomonjames/multi-server -f ./server
     - docker build -t jomonjames/multi-worker -f ./worker
+    - echo "$DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
+    - docker push jomonjames/multi-client
+    - docker push jomonjames/multi-nginx
+    - docker push jomonjames/multi-server
+    - docker push jomonjames/multi-worker
