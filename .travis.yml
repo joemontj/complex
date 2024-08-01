@@ -18,7 +18,7 @@ after_success:
     - docker push jomonjames/multi-worker
 deploy:
   provider: elasticbeanstalk
-  region: 'up-south-1'
+  region: 'ap-south-1'
   app: 'multi-docker'
   env: 'Multi-docker-env'
   bucket_name: 'elasticbeanstalk-ap-south-1-011528266681'
