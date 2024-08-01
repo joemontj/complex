@@ -16,3 +16,14 @@ after_success:
     - docker push jomonjames/multi-nginx
     - docker push jomonjames/multi-server
     - docker push jomonjames/multi-worker
+deploy:
+  provider: elasticbeanstalk
+  region: 'up-south-1'
+  app: 'multi-docker'
+  env: 'Multi-docker-env'
+  bucket_name: 'elasticbeanstalk-ap-south-1-011528266681'
+  bucket_path: 'docker-multi'
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
